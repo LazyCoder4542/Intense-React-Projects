@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 
 import "./MusicPlayer.css";
 
@@ -70,25 +70,23 @@ class MusicPlayer extends Component {
   preloadImages() {}
   render() {
     return (
-      <Router>
-        <div className="font-ff-main text-white relative min-h-screen overflow-hidden">
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                this.state.isVisited ? (
-                  <Home getResult={this.getSearchEntry} />
-                ) : (
-                  <Navigate to="./welcome" replace={true} />
-                )
-              }
-            />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </div>
-      </Router>
+      <div className="font-ff-main text-white relative min-h-screen overflow-hidden">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              this.state.isVisited ? (
+                <Home getResult={this.getSearchEntry} />
+              ) : (
+                <Navigate to="./welcome" replace={true} />
+              )
+            }
+          />
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </div>
     );
   }
 }
